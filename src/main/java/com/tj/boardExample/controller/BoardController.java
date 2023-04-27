@@ -5,6 +5,8 @@ import com.tj.boardExample.wervice.BoardService;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -28,12 +30,13 @@ public class BoardController {
         return "board.html";
     }
 
-    @RequestMapping("/boardSelect")
-    public String boardSelect(){
-        BoardDto boardDto = boardService.getBoard(1);
+    @RequestMapping("/boardSelect/{brdKey}") // 슬래시를 통해 api 늘릴 수 있음/ 메소드 지정 안할시 Default = GET
+    public String boardSelect(Model model, @PathVariable("brdKey") Integer brdKey){ // 경로변수
+        BoardDto boardDto = boardService.getBoard(brdKey);
+        model.addAttribute("board",boardDto);
         System.out.println(boardDto); // 잘 조회했는지 확인
         return "boardSelect.html";
-        // boardSelect.html에서 데이터 표현되도록
+        // boardSelect.html 에서 데이터 표현되도록
     }
 
 
@@ -41,6 +44,7 @@ public class BoardController {
     // view controller service mapper = mapper.xml (db)
     //   --->       --->     --->     =
     //   <---       <---     <---
+    //create, read, update (read+create), delete
 
     // view 화면단위
     // controller 제어단위
