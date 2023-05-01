@@ -1,7 +1,7 @@
 package com.tj.boardExample.controller;
 
 import com.tj.boardExample.dto.BoardDto;
-import com.tj.boardExample.wervice.BoardService;
+import com.tj.boardExample.service.BoardService;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
