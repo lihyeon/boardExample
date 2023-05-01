@@ -1,4 +1,4 @@
-package com.tj.boardExample.wervice;
+package com.tj.boardExample.service;
 
 import com.tj.boardExample.dto.BoardDto;
 import com.tj.boardExample.mapper.BoardMapper;

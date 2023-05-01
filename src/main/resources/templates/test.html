@@ -8,9 +8,9 @@
     [[${test}]] 입니다. <br>
     [[${test2}]] <br>
     서버가 돌아가고 있습니다.
-<!-- th문법 -->
+
     <input type="text" th:value="${test}">
-    <div th:text="${test2}"> </div>
+    <div th:utext="${test2}"></div>
 
     <div th:each="li : ${list}">
         [[${li}]]

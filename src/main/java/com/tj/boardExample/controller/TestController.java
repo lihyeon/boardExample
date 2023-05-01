@@ -12,11 +12,14 @@ import java.util.ArrayList;
 public class TestController {
 
     // 모델(데이터로직)M 제어C 화면V
+    //   C <----- V
+    //   C -----> V
+
 
     @RequestMapping("/") // 이 경로로 들어오면 내가 받겠다고 spring 에게 알려줌
     public String testPage(Model model) {
         model.addAttribute("test", "테스트");
-        model.addAttribute("test2", "가");
+        model.addAttribute("test2", "<a href=\"www.naver.com\">가</a>");
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);

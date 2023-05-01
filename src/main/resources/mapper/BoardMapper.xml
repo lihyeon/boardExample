@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tj.boardExample.mapper.BoardMapper">
+
     <insert id="insertBoard" parameterType="com.tj.boardExample.dto.BoardDto">
         INSERT INTO board (brd_title, brd_content, user_key)
         VALUES (#{brdTitle}, #{brdContent}, #{userKey})

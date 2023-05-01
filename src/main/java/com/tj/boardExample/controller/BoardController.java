@@ -1,11 +1,13 @@
 package com.tj.boardExample.controller;
 
 import com.tj.boardExample.dto.BoardDto;
-import com.tj.boardExample.wervice.BoardService;
-import jdk.swing.interop.SwingInterOpUtils;
+import com.tj.boardExample.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class BoardController {
@@ -13,26 +15,24 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @RequestMapping("/boardPage")
+    @RequestMapping(value = "/boardPage", method = RequestMethod.GET)
     public String boardPage() {
         // v -> c
         // c -> v
-
         return "board.html";
     }
-    @RequestMapping("/boardInsert")
+    @RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
     public String boardInsert(BoardDto boardDto){
-        System.out.println(boardDto.getBrdTitle());
-        System.out.println(boardDto.getBrdContent());
-
+        boardService.registerBoard(boardDto);
         return "board.html";
     }
 
-    @RequestMapping("/boardSelect")
-    public String boardSelect(){
-        BoardDto boardDto = boardService.getBoard(1);
+    @RequestMapping("/boardSelect/{brdKey}") // Default=GET
+    public String boardSelect(Model model, @PathVariable("brdKey") Integer brdKey2){
+        BoardDto boardDto = boardService.getBoard(brdKey2);
+        model.addAttribute("board", boardDto); 
         System.out.println(boardDto); // 잘 조회했는지 확인
-        return "boardSelect.html";
+        return "boardSelect"; // boardSelect.html 이라고 해도됨
         // boardSelect.html에서 데이터 표현되도록
     }
 
