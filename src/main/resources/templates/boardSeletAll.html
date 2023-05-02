@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th class="col">제목</th>
+        <th class="col">내용</th>
+        <th class="col">작성자</th>
+    </tr>
+    <tr th:each="board : ${boardList}">
+<!--        <a th:href="@{/boardDelete/{key}(key=${board.brdKey})}">삭제</a>-->
+        <td th:text="${board.brdKey}"></td>
+        <td th:text="${board.brdTitle}"></td>
+        <td th:text="${board.userKey}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

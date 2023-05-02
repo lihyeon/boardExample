@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 public class BoardController {
 
@@ -38,6 +40,15 @@ public class BoardController {
         // boardSelect.html 에서 데이터 표현되도록
     }
 
+    // 게시판 전체 조회하기
+    @RequestMapping("/boardSelectAll}") // Default = GET
+    public String boardSelectAll(Model model) {
+        List<BoardDto> boardDtoList = boardService.getAllBoard();
+        model.addAttribute("boardList", boardDtoList);
+        return "boardSelectAll";
+        // boardSelect.html 에서 데이터 표현되도록
+    }
+
     // 수정 전 정보를 조회하고 수정을 할 수 있는 페이지 return api
     @RequestMapping(value = "/boardUpdate/{brdKey}", method = RequestMethod.GET) // 수정 전 정보 조회
     public String boardUpdate(Model model, @PathVariable("brdKey") Integer brdKey) {
@@ -54,7 +65,16 @@ public class BoardController {
 //        BoardDto boardDto2 = boardService.getBoard(boardDto.getBrdKey());
 //        model.addAttribute("board", boardDto2);
 //        return "boardUpdate";
-        return "redirect:/boardUpdate/" + boardDto.getBrdKey(); // 위 3줄을 이 코드로 표현할 수도 있음(boardUpdate 를 참조)
+        return "redirect:/boardSelect/" + boardDto.getBrdKey(); // 위 3줄을 이 코드로 표현할 수도 있음(boardUpdate 를 참조)
+    }
+
+    @RequestMapping(value = "/boardDelete/{brdKey}", method = RequestMethod.GET) // 수정 전 정보 조회
+    public String boardDelete(@PathVariable("brdKey") Integer brdKey) {
+        // Integer brdKey = 1; // 1번 삭제 test
+        boardService.removeBoard(brdKey);
+        System.out.println("삭제");
+
+        return "test.html"; // Select 에서 삭제 이후 test 로 가기
     }
 
 
