@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/boardUpdate2" method="get">
+    <input type="number" name="brdKey" th:value="${board.brdKey}" hidden="hidden">
+    <p>제목 : <input type="text" name="brdTitle" th:value="${board.brdTitle}"></p>
+    <p>내용 : <input type="text" name="brdContent" th:value="${board.brdContent}"></p>
+    <p>작성자: <input type="number" name="userKey" th:value="${board.userKey}"></p>
+    <button type="submit">수정</button>
+</form>
+</body>
+</html>

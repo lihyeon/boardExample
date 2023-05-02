@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- mapper DTD 선언 -->
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tj.boardExample.mapper.BoardMapper">
 
@@ -11,12 +10,18 @@
     </insert>
 
     <select id="selectBoard" resultType="com.tj.boardExample.dto.BoardDto">
-<!--        board 테이블로부터 모든 정보를 SELCET하는 쿼리 작성 brd_key는 조건이며, 자바로부터 받아올것-->
+<!--        board 테이블로부터 모든 정보를 SELECT 하는 쿼리 작성 brd_key 는 조건이며, 자바로부터 받아올것-->
         SELECT *
         FROM board
         WHERE brd_key = #{brdKey}
     </select>
 
-
+    <update id="updateBoard" parameterType="com.tj.boardExample.dto.BoardDto">
+        UPDATE board
+        SET brd_title = #{brdTitle}
+        ,brd_content = #{brdContent}
+        ,user_key = #{userKey}
+        WHERE brd_key = #{brdKey}
+    </update>
 
 </mapper>

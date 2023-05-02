@@ -8,4 +8,6 @@ public interface BoardMapper {
     void insertBoard(BoardDto boardDto);
 
     BoardDto selectBoard(Integer brdKey);
+
+    void updateBoard(BoardDto boardDto);
 }

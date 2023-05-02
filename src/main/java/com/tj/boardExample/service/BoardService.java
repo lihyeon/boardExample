@@ -11,11 +11,16 @@ public class BoardService {
     @Autowired // 의존성 주입(연동)
     private BoardMapper boardMapper;
 
-    public void registerBoard(BoardDto boardDto) {
+    public void registerBoard(BoardDto boardDto) { // insert-register
         boardMapper.insertBoard(boardDto);
     }
 
     public BoardDto getBoard(Integer brdKey){
         return boardMapper.selectBoard(brdKey);
+    }
+
+
+    public void modifyBoard(BoardDto boardDto) { // 이름 같은걸로 맞춰줘도됨 코드 복잡화를 위한것(update-modify)
+        boardMapper.updateBoard((boardDto));
     }
 }
