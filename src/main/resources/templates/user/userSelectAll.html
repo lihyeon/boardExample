@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table class = "table">
+    <tr style = "color : red">
+        <th class = "col">ID</th>
+        <th class = "col">이름</th>
+        <th class = "col">PW</th>
+        <th class = "col">admin_flag</th>
+    </tr>
+    <tr th:each="user : ${userList}">
+        <td>
+            <a th:href="@{/userSelect/{key} (key=${user.userKey})}" th:text="${user.userId}"></a>
+        </td>
+        <td th:text="${user.userName}"></td>
+        <td th:text="${user.userPw}"></td>
+        <td th:text="${user.adminFlag}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

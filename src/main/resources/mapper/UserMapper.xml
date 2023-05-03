@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tj.boardExample.mapper.UserMapper">
+
+    <insert id="insertUser" parameterType="com.tj.boardExample.dto.UserDto">
+        INSERT INTO user (user_name, user_id, user_pw, admin_flag)
+        VALUES (#{userName}, #{userId}, #{userPw}, 0)
+    </insert>
+
+    <select id="selectUserList" resultType="com.tj.boardExample.dto.UserDto">
+        SELECT *
+        FROM user
+    </select>
+
+    <select id="selectUser" resultType="com.tj.boardExample.dto.UserDto">
+        SELECT *
+        FROM user
+        WHERE user_key = #{userKey}
+    </select>
+
+    <update id="updateUser" parameterType="com.tj.boardExample.dto.UserDto">
+        UPDATE user
+        SET user_name=#{userName}, user_id=#{userId}, user_pw=#{userPw}, admin_flag=#{adminFlag}
+        WHERE user_key = #{userKey}
+    </update>
+
+    <delete id="deleteUser" parameterType="com.tj.boardExample.dto.UserDto">
+        DELETE FROM user
+        WHERE user_key = #{userKey}
+    </delete>
+
+
+<!--    로그인 로직      -->
+    <select id="loginUser" resultType="com.tj.boardExample.dto.UserDto">
+        SELECT user_key
+        FROM user
+        WHERE user_id=#{userId}
+        AND user_pw=#{userPw}
+    </select>
+
+</mapper>

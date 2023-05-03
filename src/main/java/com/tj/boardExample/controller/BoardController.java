@@ -22,13 +22,13 @@ public class BoardController {
     public String boardPage() {
         // v -> c
         // c -> v
-        return "board.html";
+        return "board/board.html";
     }
     @RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
     public String boardInsert(BoardDto boardDto){
         boardService.registerBoard(boardDto);
 
-        return "board.html"; // templates 안의 경로에 맞춰서 이름 설정(templates 부터 경로 시작)
+        return "board/board.html"; // templates 안의 경로에 맞춰서 이름 설정(templates 부터 경로 시작)
     }
 
     @RequestMapping("/boardSelect/{brdKey}") // Default = GET
@@ -36,16 +36,16 @@ public class BoardController {
         BoardDto boardDto = boardService.getBoard(brdKey2);
         model.addAttribute("board", boardDto);
         System.out.println(boardDto); // 잘 조회했는지 확인
-        return "boardSelect";
+        return "board/boardSelect";
         // boardSelect.html 에서 데이터 표현되도록
     }
 
     // 게시판 전체 조회하기
-    @RequestMapping("/boardSelectAll}") // Default = GET
+    @RequestMapping("/boardSelectAll") // Default = GET
     public String boardSelectAll(Model model) {
         List<BoardDto> boardDtoList = boardService.getAllBoard();
         model.addAttribute("boardList", boardDtoList);
-        return "boardSelectAll";
+        return "board/boardSelectAll";
         // boardSelect.html 에서 데이터 표현되도록
     }
 
@@ -55,7 +55,7 @@ public class BoardController {
         BoardDto boardDto = boardService.getBoard(brdKey);
         model.addAttribute("board", boardDto);
         System.out.println(boardDto);
-        return "boardUpdate";
+        return "board/boardUpdate";
     }
 
     // 수정 버튼을 눌렀을때 데이터들을 통하여 실제 수정이 진행될 api
