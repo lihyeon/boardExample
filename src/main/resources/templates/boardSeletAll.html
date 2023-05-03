@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <table class="table">
-    <tr>
+    <tr style="color: blue">
         <th class="col">제목</th>
         <th class="col">내용</th>
         <th class="col">작성자</th>
     </tr>
     <tr th:each="board : ${boardList}">
 <!--        <a th:href="@{/boardDelete/{key}(key=${board.brdKey})}">삭제</a>-->
-        <td th:text="${board.brdKey}"></td>
-        <td th:text="${board.brdTitle}"></td>
+        <td>
+            <a th:href="@{/boardSelect/{key} (key=${board.brdKey})}" th:text="${board.brdTitle}"></a>
+        </td>
+        <td th:text="${board.brdContent}"></td>
         <td th:text="${board.userKey}"></td>
     </tr>
 </table>

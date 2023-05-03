@@ -14,8 +14,8 @@
 <!--    <a href="boardDelete">삭제</a>-->
 
 <!--    삭제버튼 누르면 해당 key 가진 내용 삭제됨-->
-    <a th:href="@{/boardUpdate/{key}(key=${board.brdKey})}">수정</a>
-    <a th:href="@{/boardDelete/{key}(key=${board.brdKey})}">삭제</a>
+    <a th:href="@{/boardUpdate/{key} (key=${board.brdKey})}">수정</a>
+    <a th:href="@{/boardDelete/{key} (key=${board.brdKey})}">삭제</a>
     <a href = "/boardSelectAll">목록으로</a>
 </body>
 </html>
