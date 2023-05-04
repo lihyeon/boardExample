@@ -23,6 +23,12 @@
         <td th:text="${board.userKey}"></td>
     </tr>
 </table>
+<button class="btn btn-primary" onclick="location.href='/boardPage'">등록</button>
+
+<button th:if="${session.userKey == null}" class="btn btn-warning" onclick="location.href='/loginPage'">로그인</button>
+
+<button th:if="${session.userKey != null}" class="btn btn-danger" onclick="location.href='/logout'">로그아웃</button>
+
 
 </body>
 </html>

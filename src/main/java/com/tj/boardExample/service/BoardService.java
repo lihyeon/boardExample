@@ -25,11 +25,19 @@ public class BoardService {
         return boardMapper.selectBoardList();
     }
 
-    public void modifyBoard(BoardDto boardDto) { // 이름 같은걸로 맞춰줘도됨 코드 복잡화를 위한것(update-modify)
-        boardMapper.updateBoard(boardDto);
+    public int modifyBoard(BoardDto boardDto) { // 이름 같은걸로 맞춰줘도됨 코드 복잡화를 위한것(update-modify)
+        BoardDto boardDto1 = boardMapper.selectBoard(boardDto.getBrdKey());
+        if(boardDto1.getBrdKey().equals(boardDto.getBrdKey())) {
+            boardMapper.updateBoard(boardDto);
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     public void removeBoard(Integer brdKey) {
+
         boardMapper.deleteBoard(brdKey);
+
     }
 }

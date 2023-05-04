@@ -79,16 +79,18 @@ public class UserController {
     }
     // loginPage 에서 올라온 데이터를 가지고 실제 로그인이 진행될 API
     @RequestMapping(value = "/loginLogic", method = RequestMethod.GET)
-    public String loginLogic(LoginDto loginDto, HttpSession session) {
+    public String loginLogic(Model model,LoginDto loginDto, HttpSession session) {
         int result = userService.login(loginDto);
         if (result != 0) {
             session.setAttribute("userKey", result);
             // 로그인 로직
             // 항상
         } else {
+            model.addAttribute("error", "로그인이 실패하였습니다.");
+            return "user/loginPage";
 
         }
-        return "user/loginPage";
+        return "redirect:/";
     }
     @RequestMapping("/loginTest") // 이 경로로 들어오면 내가 받겠다. Spring 에게 알려준것
     public String testPage(Model model, HttpSession session) {
@@ -109,5 +111,12 @@ public class UserController {
         arrayList.add(7);
         model.addAttribute("list", arrayList);
         return "test";
+    }
+    
+    // 로그아웃
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 }

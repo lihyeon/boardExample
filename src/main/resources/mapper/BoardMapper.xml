@@ -32,7 +32,7 @@
         WHERE brd_key = #{brdKey}
     </update>
 
-<!--    Integer brdKey = 1; 로 test 하기 때문에 int로 설정 -->
+<!--    Integer brdKey = 1; 로 test 하기 때문에 int 로 설정 -->
     <delete id="deleteBoard" parameterType="int">
         DELETE FROM board
         WHERE brd_key = #{brdKey}

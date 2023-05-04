@@ -1,7 +1,6 @@
 package com.tj.boardExample.service;
 
 
-import com.tj.boardExample.dto.BoardDto;
 import com.tj.boardExample.dto.LoginDto;
 import com.tj.boardExample.dto.UserDto;
 import com.tj.boardExample.mapper.UserMapper;
@@ -39,6 +38,9 @@ public class UserService {
     // login
     public int login(LoginDto loginDto) {
         UserDto userDto = userMapper.loginUser(loginDto);
+        if(userDto==null){
+            return 0;
+        }
         if (userDto.getUserPw().equals(loginDto.getUserPw())) {
             return userDto.getUserKey();
         } else {
