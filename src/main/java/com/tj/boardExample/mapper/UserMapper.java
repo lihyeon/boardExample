@@ -21,5 +21,5 @@ public interface UserMapper {
     void deleteUser(UserDto userDto);
     
     // 로그인 로직
-    UserDto loginDto(LoginDto loginDto);
+    UserDto loginUser(LoginDto loginDto);
 }

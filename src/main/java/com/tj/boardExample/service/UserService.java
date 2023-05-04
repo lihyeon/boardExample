@@ -36,9 +36,14 @@ public class UserService {
         userMapper.deleteUser(userDto);
     }
 
+    // login
     public int login(LoginDto loginDto) {
-        UserDto userDto = userMapper.loginDto(loginDto);
-        return 0;
+        UserDto userDto = userMapper.loginUser(loginDto);
+        if (userDto.getUserPw().equals(loginDto.getUserPw())) {
+            return userDto.getUserKey();
+        } else {
+            return 0;
+        }
     }
 
 }
