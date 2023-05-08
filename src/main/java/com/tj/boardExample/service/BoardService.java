@@ -17,12 +17,12 @@ public class BoardService {
         boardMapper.insertBoard(boardDto);
     }
 
-    public BoardDto getBoard(Integer brdKey){
-        return boardMapper.selectBoard(brdKey);
-    }
-
     public List<BoardDto> getAllBoard() {
         return boardMapper.selectBoardList();
+    }
+
+    public BoardDto getBoard(Integer brdKey){
+        return boardMapper.selectBoard(brdKey);
     }
 
     public int modifyBoard(BoardDto boardDto) { // 이름 같은걸로 맞춰줘도됨 코드 복잡화를 위한것(update-modify)

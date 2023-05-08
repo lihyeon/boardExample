@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
 @Controller // 이 클래스 파일이 실제로 돌아갈때 객체가 되면, controller 의 기능을 하게끔 spring 에게 알려줌
